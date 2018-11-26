@@ -13,10 +13,12 @@ application.mainClassName = "MainKt"
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
+    testCompile(kotlin("test"))
     testCompile("junit", "junit", "4.12")
 }
 
