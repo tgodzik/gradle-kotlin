@@ -2,14 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins{
     java
-    application
     kotlin("jvm") version "1.3.10"
 }
 
 group = "kug"
 version = "1.0-SNAPSHOT"
-
-application.mainClassName = "MainKt"
 
 repositories {
     mavenCentral()
