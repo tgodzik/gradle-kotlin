@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import javax.inject.Inject
 
 plugins {
     java
@@ -22,7 +23,7 @@ dependencies {
     testCompile("junit", "junit", "4.12")
 }
 
-task("kotlinTest") {
+task("calculate") {
     doLast {
         val result = 5 + 4
         println(result)
@@ -30,6 +31,11 @@ task("kotlinTest") {
 }.dependsOn("run")
 
 task<Copy>("copy") {
+    from(file("src"))
+    into(buildDir)
+}
+
+val copyDelegate by tasks.creating(Copy::class) {
     from(file("src"))
     into(buildDir)
 }
