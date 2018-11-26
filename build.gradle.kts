@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-plugins{
+plugins {
     java
     application
     kotlin("jvm") version "1.3.10"
@@ -20,6 +20,18 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
     testCompile(kotlin("test"))
     testCompile("junit", "junit", "4.12")
+}
+
+task("kotlinTest") {
+    doLast {
+        val result = 5 + 4
+        println(result)
+    }
+}.dependsOn("run")
+
+task<Copy>("copy") {
+    from(file("src"))
+    into(buildDir)
 }
 
 configure<JavaPluginConvention> {
