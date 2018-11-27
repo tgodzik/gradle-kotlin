@@ -40,6 +40,20 @@ val copyDelegate by tasks.creating(Copy::class) {
     into(buildDir)
 }
 
+open class Echo @Inject constructor(
+    private val message: String
+) : DefaultTask(){
+
+    @TaskAction
+    fun echo() {
+        println(message)
+    }
+}
+
+tasks.create<Echo>("echoDuck", "------")
+
+
+
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
