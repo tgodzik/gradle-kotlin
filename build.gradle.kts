@@ -4,14 +4,21 @@ import javax.inject.Inject
 plugins {
     java
     kotlin("jvm") version "1.3.10"
+    id("git-plugin")
 }
 
 group = "kug"
 version = "1.0-SNAPSHOT"
 
+//println(extra["token"])
+apply(from = "plugin.gradle.kts")
+println(extra["token"])
+
 //tasks.whenTaskAdded{
 //    println(this.name)
 //}
+
+
 
 allprojects {
     repositories {
