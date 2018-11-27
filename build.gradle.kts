@@ -3,18 +3,21 @@ import javax.inject.Inject
 
 plugins {
     java
-    application
     kotlin("jvm") version "1.3.10"
 }
 
 group = "kug"
 version = "1.0-SNAPSHOT"
 
-application.mainClassName = "MainKt"
+//tasks.whenTaskAdded{
+//    println(this.name)
+//}
 
-repositories {
-    mavenCentral()
-    mavenLocal()
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
 }
 
 dependencies {
@@ -52,11 +55,17 @@ open class Echo @Inject constructor(
 
 tasks.create<Echo>("echoDuck", "------")
 
+afterEvaluate{
+//    println("coming from after evaluate")
+}
 
+//println("coming from evaluate")
 
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
